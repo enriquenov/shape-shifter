@@ -2,7 +2,7 @@ body {
   font-family: sans-serif;
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
 }
@@ -23,4 +23,46 @@ nav a {
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+/* CANVAS */
+
+/* desktop-x-small */
+@media all and (min-width: 0) and (max-width: 480px) {
+  canvas {
+    height: 65vh;
+    width: 100%;
+  }
+}
+
+/* desktop-small */
+@media all and (min-width: 481px) and (max-width: 840px) {
+  canvas {
+    height: 65vh;
+    width: 100%;
+  }
+}
+
+/* desktop-medium */
+@media all and (min-width: 841px) and (max-width: 1280px) {
+  canvas {
+    height: 75vh;
+    width: 100%;
+  }
+}
+
+/* desktop-large */
+@media all and (min-width: 1281px) and (max-width: 1600px) {
+  canvas {
+    height: 70vh;
+    width: 100%;
+  }
+}
+
+/* desktop-xlarge */
+@media all and (min-width: 1601px) {
+  canvas {
+    height: 75vh;
+    width: 100%;
+  }
 }

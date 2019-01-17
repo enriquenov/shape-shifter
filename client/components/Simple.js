@@ -3,12 +3,12 @@ import React3 from 'react-three-renderer'
 import * as THREE from 'three'
 
 class Simple extends React.Component {
-  constructor(props, context) {
-    super(props, context)
+  constructor(props) {
+    super(props)
 
     //construct the position vector here, because if we use 'new' within render,
     // React will think that things have changed when they have not
-    this.cameraPosition = new THREE.Vector3(0, 0, 5)
+    this.cameraPosition = new THREE.Vector3(0, 0, 10)
 
     this.state = {
       cubeRotation: new THREE.Euler()
@@ -22,8 +22,8 @@ class Simple extends React.Component {
       // React will be sure that the rotation has now updated.
       this.setState({
         cubeRotation: new THREE.Euler(
-          this.state.cubeRotation.x + 0.1,
-          this.state.cubeRotation.y + 0.1,
+          this.state.cubeRotation.x + 0.02,
+          this.state.cubeRotation.y + 0.02,
           0
         )
       })
@@ -33,12 +33,17 @@ class Simple extends React.Component {
   render() {
     const width = window.innerWidth // canvas width
     const height = window.innerHeight // canvas height
+    const type = this.props.type
 
     return (
       <React3
         mainCamera="camera" // this points to the perspectiveCamera which has the name set to "camera" below
         width={width}
         height={height}
+        clearColor={0x0c2340}
+        // alpha={true}
+        clearAlpha={3}
+        onAnimate={this._onAnimate}
       >
         <scene>
           <perspectiveCamera
@@ -50,9 +55,17 @@ class Simple extends React.Component {
             position={this.cameraPosition}
           />
           <mesh rotation={this.state.cubeRotation}>
-            <boxGeometry width={1} height={1} depth={1} />
-            <meshBasicMaterial color={0x00ff00} />
+            <boxGeometry width={2} height={2} depth={3} />
+            {/* <meshBasicMaterial color={0x00ff00} /> */}
+            <meshLambertMaterial color={0xf3ffe2} />
           </mesh>
+
+          <ambientLight intensity={0.6} />
+          <pointLight
+            color={0xffffff}
+            distance={10000}
+            position={new THREE.Vector3(3, 3, 3)}
+          />
         </scene>
       </React3>
     )

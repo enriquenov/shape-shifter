@@ -17,8 +17,6 @@ describe('Home component', () => {
   })
 
   it('renders a welcoming greeting', () => {
-    expect(home.find('h3').text()).to.be.equal(
-      'Welcome to Three.js by Enrique!'
-    )
+    expect(home.find('h3').text()).to.be.equal('Welcome!!!')
   })
 })
