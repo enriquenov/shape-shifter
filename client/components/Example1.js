@@ -2,7 +2,7 @@ import React from 'react'
 import React3 from 'react-three-renderer'
 import * as THREE from 'three'
 
-class Simple extends React.Component {
+class Example1 extends React.Component {
   constructor(props) {
     super(props)
 
@@ -22,9 +22,9 @@ class Simple extends React.Component {
       // React will be sure that the rotation has now updated.
       this.setState({
         cubeRotation: new THREE.Euler(
-          this.state.cubeRotation.x + 0.02,
-          this.state.cubeRotation.y + 0.02,
-          0
+          this.state.cubeRotation.x,
+          this.state.cubeRotation.y + 0.01,
+          5
         )
       })
     }
@@ -32,7 +32,7 @@ class Simple extends React.Component {
 
   render() {
     const width = window.innerWidth // canvas width
-    const height = window.innerHeight // canvas height
+    const height = window.innerHeight - 130 // canvas height
     const type = this.props.type
 
     return (
@@ -41,23 +41,23 @@ class Simple extends React.Component {
         width={width}
         height={height}
         clearColor={0x0c2340}
-        // alpha={true}
+        alpha={true}
         clearAlpha={3}
         onAnimate={this._onAnimate}
       >
         <scene>
           <perspectiveCamera
             name="camera"
-            fov={75}
+            fov={50}
             aspect={width / height}
-            near={0.1}
-            far={1000}
+            near={0.5}
+            far={2000}
             position={this.cameraPosition}
           />
           <mesh rotation={this.state.cubeRotation}>
-            <boxGeometry width={2} height={2} depth={3} />
+            <boxGeometry width={2} height={2} depth={2} />
             {/* <meshBasicMaterial color={0x00ff00} /> */}
-            <meshLambertMaterial color={0xf3ffe2} />
+            <meshLambertMaterial color={0xf0e68c} />
           </mesh>
 
           <ambientLight intensity={0.6} />
@@ -72,4 +72,4 @@ class Simple extends React.Component {
   }
 }
 
-export default Simple
+export default Example1

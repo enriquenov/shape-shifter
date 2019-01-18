@@ -5,7 +5,7 @@ import React from 'react'
  */
 const Home = () => {
   return (
-    <div>
+    <div className="container home">
       <h3>Welcome!!!</h3>
       <p>Checkout the examples and have fun!</p>
     </div>
