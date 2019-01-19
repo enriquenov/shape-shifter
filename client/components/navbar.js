@@ -11,6 +11,7 @@ const Navbar = () => (
       <Link to="/example3">Example 3</Link>
       <Link to="/example4">Example 4</Link>
       <Link to="/example5">Example 5</Link>
+      <Link to="/example6">Example 6</Link>
     </nav>
   </div>
 )

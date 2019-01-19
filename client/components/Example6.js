@@ -11,7 +11,9 @@ class Example5 extends React.Component {
     this.cameraPosition = new THREE.Vector3(0, 0, 50)
 
     this.state = {
-      cubeRotation: new THREE.Euler()
+      cubeRotation: new THREE.Euler(),
+      ballPosition: new THREE.Vector3(0, -60, 0),
+      color: '0x32CD32'
     }
 
     this._onAnimate = () => {
@@ -22,9 +24,9 @@ class Example5 extends React.Component {
       // React will be sure that the rotation has now updated.
       this.setState({
         cubeRotation: new THREE.Euler(
-          this.state.cubeRotation.x + 0.01,
-          this.state.cubeRotation.y + 0.01,
-          5
+          this.state.cubeRotation.x + 0.005,
+          this.state.cubeRotation.y - 0.005,
+          1
         )
       })
     }
@@ -48,23 +50,25 @@ class Example5 extends React.Component {
         <scene>
           <perspectiveCamera
             name="camera"
-            fov={50}
+            fov={30}
             aspect={width / height}
-            near={0.1}
-            far={1000}
+            near={1}
+            far={10000}
             position={this.cameraPosition}
           />
-          <mesh rotation={this.state.cubeRotation}>
-            <torusKnotGeometry
-              radius={8}
-              tube={2}
-              tubularSegments={100}
-              radialSegments={16}
+          <mesh
+            rotation={this.state.cubeRotation}
+            position={this.state.ballPosition}
+          >
+            <sphereGeometry
+              radius={60}
+              widthSegments={20}
+              heightSegments={20}
             />
-            <meshLambertMaterial color={0xbb8e4c} />
+            <meshPhongMaterial color={Number.parseInt(this.state.color, 16)} />
           </mesh>
 
-          <ambientLight intensity={0.8} />
+          <ambientLight intensity={0.6} />
           <pointLight
             color={0xffffff}
             distance={10000}
