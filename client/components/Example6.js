@@ -11,8 +11,10 @@ class Example5 extends React.Component {
     this.cameraPosition = new THREE.Vector3(0, 0, 50)
 
     this.state = {
+      sphereRotation: new THREE.Euler(),
       cubeRotation: new THREE.Euler(),
-      ballPosition: new THREE.Vector3(0, -60, 0),
+      spherePosition: new THREE.Vector3(0, -60, 0),
+      cubePosition: new THREE.Vector3(0, 5, 0),
       color: '0x32CD32'
     }
 
@@ -23,10 +25,15 @@ class Example5 extends React.Component {
       // this helps with updates and pure rendering.
       // React will be sure that the rotation has now updated.
       this.setState({
-        cubeRotation: new THREE.Euler(
-          this.state.cubeRotation.x + 0.005,
-          this.state.cubeRotation.y - 0.005,
+        sphereRotation: new THREE.Euler(
+          this.state.sphereRotation.x + 0.005,
+          this.state.sphereRotation.y - 0.005,
           1
+        ),
+        cubeRotation: new THREE.Euler(
+          this.state.cubeRotation.x,
+          this.state.cubeRotation.y + 0.01,
+          5
         )
       })
     }
@@ -35,7 +42,6 @@ class Example5 extends React.Component {
   render() {
     const width = window.innerWidth // canvas width
     const height = window.innerHeight - 130 // canvas height
-    const type = this.props.type
 
     return (
       <React3
@@ -56,9 +62,19 @@ class Example5 extends React.Component {
             far={10000}
             position={this.cameraPosition}
           />
+          {/* BOX */}
           <mesh
             rotation={this.state.cubeRotation}
-            position={this.state.ballPosition}
+            position={this.state.cubePosition}
+          >
+            <boxGeometry width={5} height={5} depth={5} />
+            <meshLambertMaterial color={0xffa07a} />
+          </mesh>
+
+          {/* SPHERE */}
+          <mesh
+            rotation={this.state.sphereRotation}
+            position={this.state.spherePosition}
           >
             <sphereGeometry
               radius={60}
