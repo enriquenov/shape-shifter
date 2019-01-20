@@ -33,7 +33,6 @@ class Example1 extends React.Component {
   render() {
     const width = window.innerWidth // canvas width
     const height = window.innerHeight - 130 // canvas height
-    const type = this.props.type
 
     return (
       <React3
@@ -56,7 +55,6 @@ class Example1 extends React.Component {
           />
           <mesh rotation={this.state.cubeRotation}>
             <boxGeometry width={2} height={2} depth={2} />
-            {/* <meshBasicMaterial color={0x00ff00} /> */}
             <meshLambertMaterial color={0xf0e68c} />
           </mesh>
 
