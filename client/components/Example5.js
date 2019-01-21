@@ -32,7 +32,7 @@ class Example5 extends React.Component {
 
   render() {
     const width = window.innerWidth // canvas width
-    const height = window.innerHeight - 130 // canvas height
+    const height = window.innerHeight - 122 // canvas height
     const type = this.props.type
 
     return (

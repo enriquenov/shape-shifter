@@ -6,36 +6,36 @@ class Example3 extends React.Component {
   constructor(props) {
     super(props)
 
-    //construct the position vector here, because if we use 'new' within render,
-    // React will think that things have changed when they have not
-    this.cameraPosition = new THREE.Vector3(0, 0, 80)
+    this.cameraPosition = new THREE.Vector3(0, 0, 40)
 
     this.state = {
-      cubeRotation: new THREE.Euler()
+      heartRot: new THREE.Euler(),
+      heartPos: new THREE.Vector3(0, -8, 0)
     }
 
     this._onAnimate = () => {
-      // we will get this callback every frame
-
-      // pretend cubeRotation is immutable.
-      // this helps with updates and pure rendering.
-      // React will be sure that the rotation has now updated.
       this.setState({
-        cubeRotation: new THREE.Euler(
-          this.state.cubeRotation.x + 0.01,
-          this.state.cubeRotation.y + 0.05,
-          1
-        )
+        heartRot: new THREE.Euler(0, this.state.heartRot.y + 0.02, 0)
       })
     }
   }
 
   render() {
     const width = window.innerWidth // canvas width
-    const height = window.innerHeight - 130 // canvas height
+    const height = window.innerHeight - 122 // canvas height
 
     let x = 0
     let y = 0
+
+    const extrudeSettings = {
+      amount: 3,
+      bevelEnabled: true,
+      bevelSegments: 2,
+      steps: 2,
+      bevelSize: 1,
+      bevelThickness: 1
+    }
+
     let heartShape = new THREE.Shape()
 
     heartShape.moveTo(x + 5, y + 5)
@@ -65,17 +65,22 @@ class Example3 extends React.Component {
             far={500}
             position={this.cameraPosition}
           />
-          <mesh rotation={this.state.cubeRotation}>
-            <shapeGeometry shapes={[heartShape]} />
-            <meshLambertMaterial color={0xfa8072} />
+
+          <mesh
+            // 3d shape
+            position={this.state.heartPos}
+            rotation={this.state.heartRot}
+          >
+            <extrudeGeometry shapes={[heartShape]} settings={extrudeSettings} />
+            <meshPhongMaterial color={0xf00000} />
           </mesh>
 
-          <ambientLight intensity={0.8} />
+          <ambientLight intensity={0.7} />
 
           <pointLight
             color={0xffffff}
             distance={10000}
-            position={new THREE.Vector3(1, 1, 1)}
+            position={new THREE.Vector3(3, 3, 3)}
           />
         </scene>
       </React3>

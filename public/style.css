@@ -48,12 +48,10 @@ nav a {
   border-radius: 3px;
   transition: all 0.35s ease;
 }
-nav a:hover {
-  background-color: #a52a2a;
-}
-
+nav a:hover,
 .selected {
   background-color: #a52a2a;
+  color: #eee;
 }
 
 form div {

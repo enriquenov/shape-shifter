@@ -8,22 +8,22 @@ const Navbar = () => (
       <NavLink exact to="/" activeClassName="selected">
         Home
       </NavLink>
-      <NavLink to="/example1" activeClassName="selected">
+      <NavLink to="/first" activeClassName="selected">
         First
       </NavLink>
-      <NavLink to="/example2" activeClassName="selected">
+      <NavLink to="/second" activeClassName="selected">
         Second
       </NavLink>
-      <NavLink to="/example3" activeClassName="selected">
+      <NavLink to="/third" activeClassName="selected">
         Third
       </NavLink>
-      <NavLink to="/example4" activeClassName="selected">
+      <NavLink to="/fourth" activeClassName="selected">
         Fourth
       </NavLink>
-      <NavLink to="/example5" activeClassName="selected">
+      <NavLink to="/fifth" activeClassName="selected">
         Fifth
       </NavLink>
-      <NavLink to="/example6" activeClassName="selected">
+      <NavLink to="/sixth" activeClassName="selected">
         Sixth
       </NavLink>
     </nav>

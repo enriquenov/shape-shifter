@@ -63,7 +63,7 @@ class Example5 extends React.Component {
 
   render() {
     const width = window.innerWidth
-    const height = window.innerHeight - 130
+    const height = window.innerHeight - 122
 
     return (
       <React3

@@ -16,12 +16,12 @@ class Routes extends Component {
     return (
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/example1" component={Example1} />
-        <Route path="/example2" component={Example2} />
-        <Route path="/example3" component={Example3} />
-        <Route path="/example4" component={Example4} />
-        <Route path="/example5" component={Example5} />
-        <Route path="/example6" component={Example6} />
+        <Route path="/first" component={Example1} />
+        <Route path="/second" component={Example2} />
+        <Route path="/third" component={Example3} />
+        <Route path="/fourth" component={Example4} />
+        <Route path="/fifth" component={Example5} />
+        <Route path="/sixth" component={Example6} />
       </Switch>
     )
   }
