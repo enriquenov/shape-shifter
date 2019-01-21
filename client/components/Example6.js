@@ -1,10 +1,11 @@
 import React from 'react'
 import React3 from 'react-three-renderer'
 import * as THREE from 'three'
-import Cube from './shapes/cube'
 import Sphere from './shapes/sphere'
+import Sun from './shapes/sun'
 import ExtrudeShape from './shapes/extrudeShape'
 import Cylinder from './shapes/cylinder'
+import Cube from './shapes/cube'
 
 class Example5 extends React.Component {
   constructor(props) {
@@ -15,6 +16,8 @@ class Example5 extends React.Component {
     this.state = {
       sphereRot: new THREE.Euler(),
       spherePos: new THREE.Vector3(0, -65, 0),
+      sunRot: new THREE.Euler(),
+      sunPos: new THREE.Vector3(23, 8, 0),
       cubeRot: new THREE.Euler(),
       cubePos: new THREE.Vector3(20, 0, 0),
       extrudeRot: new THREE.Euler(),
@@ -26,6 +29,7 @@ class Example5 extends React.Component {
     this._onAnimate = () => {
       this.setState({
         sphereRot: new THREE.Euler(this.state.sphereRot.x + 0.005, 0, 0),
+        sunRot: new THREE.Euler(0, 0, this.state.sunRot.z - 0.015),
         cubeRot: new THREE.Euler(this.state.cubeRot.x - 0.02, 0, -2),
         extrudeRot: new THREE.Euler(
           this.state.extrudeRot.x + 0.01,
@@ -84,6 +88,9 @@ class Example5 extends React.Component {
             rotation={this.state.cylinderRot}
             position={this.state.cylinderPos}
           />
+
+          {/* SUN */}
+          <Sun rotation={this.state.sunRot} position={this.state.sunPos} />
 
           {/* LIGHTING */}
           <ambientLight intensity={0.6} />
