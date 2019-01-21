@@ -6,6 +6,7 @@ import Sun from './shapes/sun'
 import ExtrudeShape from './shapes/extrudeShape'
 import Cylinder from './shapes/cylinder'
 import Cube from './shapes/cube'
+import Pyramid from './shapes/pyramid'
 
 class Example5 extends React.Component {
   constructor(props) {
@@ -23,7 +24,9 @@ class Example5 extends React.Component {
       extrudeRot: new THREE.Euler(),
       extrudePos: new THREE.Vector3(-20, 0, 0),
       cylinderRot: new THREE.Euler(),
-      cylinderPos: new THREE.Vector3(0, 3, 0)
+      cylinderPos: new THREE.Vector3(0, 3, 0),
+      pyramidRot: new THREE.Euler(),
+      pyramidPos: new THREE.Vector3(-10, 4, 0)
     }
 
     this._onAnimate = () => {
@@ -40,6 +43,11 @@ class Example5 extends React.Component {
           this.state.cylinderRot.x + 0.01,
           this.state.cylinderRot.y - 0.01,
           this.state.cylinderRot.z + 0.02
+        ),
+        pyramidRot: new THREE.Euler(
+          this.state.pyramidRot.x - 0.01,
+          this.state.pyramidRot.y + 0.01,
+          0
         )
       })
     }
@@ -68,14 +76,18 @@ class Example5 extends React.Component {
             far={10000}
             position={this.cameraPosition}
           />
-          {/* CUBE SHAPE*/}
-          <Cube rotation={this.state.cubeRot} position={this.state.cubePos} />
 
           {/* SPHERE SHAPE*/}
           <Sphere
             rotation={this.state.sphereRot}
             position={this.state.spherePos}
           />
+
+          {/* SUN */}
+          <Sun rotation={this.state.sunRot} position={this.state.sunPos} />
+
+          {/* CUBE SHAPE*/}
+          <Cube rotation={this.state.cubeRot} position={this.state.cubePos} />
 
           {/* EXTRUDE SHAPE */}
           <ExtrudeShape
@@ -89,8 +101,11 @@ class Example5 extends React.Component {
             position={this.state.cylinderPos}
           />
 
-          {/* SUN */}
-          <Sun rotation={this.state.sunRot} position={this.state.sunPos} />
+          {/* PYRAMID */}
+          <Pyramid
+            rotation={this.state.pyramidRot}
+            position={this.state.pyramidPos}
+          />
 
           {/* LIGHTING */}
           <ambientLight intensity={0.6} />
