@@ -7,6 +7,7 @@ import ExtrudeShape from './shapes/extrudeShape'
 import Cylinder from './shapes/cylinder'
 import Cube from './shapes/cube'
 import Pyramid from './shapes/pyramid'
+import Lathe from './shapes/lathe'
 
 class Example5 extends React.Component {
   constructor(props) {
@@ -26,7 +27,9 @@ class Example5 extends React.Component {
       cylinderRot: new THREE.Euler(),
       cylinderPos: new THREE.Vector3(0, 3, 0),
       pyramidRot: new THREE.Euler(),
-      pyramidPos: new THREE.Vector3(-10, 4, 0)
+      pyramidPos: new THREE.Vector3(-10, 4, 0),
+      latheRot: new THREE.Euler(),
+      lathePos: new THREE.Vector3(10, 4, 0)
     }
 
     this._onAnimate = () => {
@@ -48,6 +51,11 @@ class Example5 extends React.Component {
           this.state.pyramidRot.x - 0.01,
           this.state.pyramidRot.y + 0.01,
           0
+        ),
+        latheRot: new THREE.Euler(
+          this.state.latheRot.x - 0.02,
+          this.state.latheRot.y + 0.01,
+          -2
         )
       })
     }
@@ -105,6 +113,12 @@ class Example5 extends React.Component {
           <Pyramid
             rotation={this.state.pyramidRot}
             position={this.state.pyramidPos}
+          />
+
+          {/* LATHE */}
+          <Lathe
+            rotation={this.state.latheRot}
+            position={this.state.lathePos}
           />
 
           {/* LIGHTING */}

@@ -18,17 +18,42 @@ label {
 
 .navbar {
   text-align: center;
-  margin-top: 30px;
-  height: 100px;
+  /* height: 100px; */
+  background-color: #212121;
+  color: #fff;
 }
 
 .navbar h1 {
+  padding-top: 20px;
+  /* padding-bottom: 10px; */
   margin: 0;
+  font-family: 'Comfortaa';
+  font-size: 36px;
+  letter-spacing: 0.05em;
+  font-weight: 100;
+}
+
+nav {
+  background-color: #212121;
+  /* background-color: rgba(255, 255, 255, 0.16); */
 }
 
 nav a {
+  font-family: 'Open Sans';
+  color: #fff;
   display: inline-block;
   margin: 1em;
+  background-color: rgba(255, 255, 255, 0.16);
+  padding: 4px 10px;
+  border-radius: 3px;
+  transition: all 0.35s ease;
+}
+nav a:hover {
+  background-color: #a52a2a;
+}
+
+.selected {
+  background-color: #a52a2a;
 }
 
 form div {
@@ -37,56 +62,12 @@ form div {
 }
 
 /* HELPERS */
-
 .container {
   width: 80%;
   margin: 0 auto;
 }
 
-/* CANVAS */
-
-/* desktop-x-small */
-@media all and (min-width: 0) and (max-width: 480px) {
-  canvas {
-    height: 65vh;
-    width: 100%;
-  }
-}
-
-/* desktop-small */
-@media all and (min-width: 481px) and (max-width: 840px) {
-  canvas {
-    height: 65vh;
-    width: 100%;
-  }
-}
-
-/* desktop-medium */
-@media all and (min-width: 841px) and (max-width: 1280px) {
-  canvas {
-    height: 75vh;
-    width: 100%;
-  }
-}
-
-/* desktop-large */
-@media all and (min-width: 1281px) and (max-width: 1600px) {
-  canvas {
-    height: 70vh;
-    width: 100%;
-  }
-}
-
-/* desktop-xlarge */
-@media all and (min-width: 1601px) {
-  canvas {
-    height: 75vh;
-    width: 100%;
-  }
-}
-
 /* HOME */
-
 .home {
   text-align: center;
 }
