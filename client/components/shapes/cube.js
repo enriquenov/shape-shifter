@@ -5,8 +5,8 @@ const Cube = props => {
 
   return (
     <mesh rotation={rotation} position={position}>
-      <boxGeometry width={4} height={4} depth={4} />
-      <meshLambertMaterial color={0xffa07a} />
+      <boxGeometry width={3} height={3} depth={3} />
+      <meshLambertMaterial color={0xc0c0c0} />
     </mesh>
   )
 }

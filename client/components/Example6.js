@@ -21,7 +21,7 @@ class Example5 extends React.Component {
       sunRot: new THREE.Euler(),
       sunPos: new THREE.Vector3(23, 8, 0),
       cubeRot: new THREE.Euler(),
-      cubePos: new THREE.Vector3(20, 0, 0),
+      cubePos: new THREE.Vector3(10, 4, 0),
       extrudeRot: new THREE.Euler(),
       extrudePos: new THREE.Vector3(-20, 0, 0),
       cylinderRot: new THREE.Euler(),
@@ -29,7 +29,7 @@ class Example5 extends React.Component {
       pyramidRot: new THREE.Euler(),
       pyramidPos: new THREE.Vector3(-10, 4, 0),
       latheRot: new THREE.Euler(),
-      lathePos: new THREE.Vector3(10, 4, 0)
+      lathePos: new THREE.Vector3(20, -1, 0)
     }
 
     this._onAnimate = () => {
@@ -53,9 +53,9 @@ class Example5 extends React.Component {
           0
         ),
         latheRot: new THREE.Euler(
-          this.state.latheRot.x - 0.02,
-          this.state.latheRot.y + 0.01,
-          -2
+          0,
+          this.state.latheRot.y + 0.03,
+          this.state.latheRot.z - 0.01
         )
       })
     }
