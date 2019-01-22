@@ -1,73 +1,35 @@
 import React from 'react'
 import React3 from 'react-three-renderer'
 import * as THREE from 'three'
-import Sphere from './shapes/sphere'
-import Sun from './shapes/sun'
-import ExtrudeShape from './shapes/extrudeShape'
-import Cylinder from './shapes/cylinder'
-import Cube from './shapes/cube'
-import Pyramid from './shapes/pyramid'
-import Lathe from './shapes/lathe'
 
-class Example5 extends React.Component {
+class Example6 extends React.Component {
   constructor(props) {
     super(props)
 
-    this.cameraPosition = new THREE.Vector3(0, 0, 50)
+    this.cameraPosition = new THREE.Vector3(0, 0, 40)
 
     this.state = {
-      sphereRot: new THREE.Euler(),
-      spherePos: new THREE.Vector3(0, -65, 0),
-      sunRot: new THREE.Euler(),
-      sunPos: new THREE.Vector3(23, 8, 0),
-      cubeRot: new THREE.Euler(),
-      cubePos: new THREE.Vector3(10, 4, 0),
-      extrudeRot: new THREE.Euler(),
-      extrudePos: new THREE.Vector3(-20, 0, 0),
-      cylinderRot: new THREE.Euler(),
-      cylinderPos: new THREE.Vector3(0, 3, 0),
-      pyramidRot: new THREE.Euler(),
-      pyramidPos: new THREE.Vector3(-10, 4, 0),
-      latheRot: new THREE.Euler(),
-      lathePos: new THREE.Vector3(20, -1, 0)
+      cubeRotation: new THREE.Euler()
     }
 
     this._onAnimate = () => {
       this.setState({
-        sphereRot: new THREE.Euler(this.state.sphereRot.x + 0.005, 0, 0),
-        sunRot: new THREE.Euler(0, 0, this.state.sunRot.z - 0.015),
-        cubeRot: new THREE.Euler(this.state.cubeRot.x - 0.02, 0, -2),
-        extrudeRot: new THREE.Euler(
-          this.state.extrudeRot.x + 0.01,
-          this.state.extrudeRot.y + 0.01,
-          this.state.extrudeRot.z - 0.03
-        ),
-        cylinderRot: new THREE.Euler(
-          this.state.cylinderRot.x + 0.01,
-          this.state.cylinderRot.y - 0.01,
-          this.state.cylinderRot.z + 0.02
-        ),
-        pyramidRot: new THREE.Euler(
-          this.state.pyramidRot.x - 0.01,
-          this.state.pyramidRot.y + 0.01,
-          0
-        ),
-        latheRot: new THREE.Euler(
-          0,
-          this.state.latheRot.y + 0.03,
-          this.state.latheRot.z - 0.01
+        cubeRotation: new THREE.Euler(
+          this.state.cubeRotation.x + 0.02,
+          this.state.cubeRotation.y + 0.01,
+          3
         )
       })
     }
   }
 
   render() {
-    const width = window.innerWidth
-    const height = window.innerHeight - 122
+    const width = window.innerWidth // canvas width
+    const height = window.innerHeight - 122 // canvas height
 
     return (
       <React3
-        mainCamera="camera"
+        mainCamera="camera" // this points to the perspectiveCamera which has the name set to "camera" below
         width={width}
         height={height}
         clearColor={0x0c2340}
@@ -78,55 +40,23 @@ class Example5 extends React.Component {
         <scene>
           <perspectiveCamera
             name="camera"
-            fov={30}
+            fov={300}
             aspect={width / height}
-            near={1}
-            far={10000}
+            near={0.5}
+            far={500}
             position={this.cameraPosition}
           />
+          <mesh rotation={this.state.cubeRotation}>
+            <sphereGeometry radius={8} widthSegments={32} heightSegments={32} />
+            <meshLambertMaterial color={0xfa8072} />
+          </mesh>
 
-          {/* SPHERE SHAPE*/}
-          <Sphere
-            rotation={this.state.sphereRot}
-            position={this.state.spherePos}
-          />
-
-          {/* SUN */}
-          <Sun rotation={this.state.sunRot} position={this.state.sunPos} />
-
-          {/* CUBE SHAPE*/}
-          <Cube rotation={this.state.cubeRot} position={this.state.cubePos} />
-
-          {/* EXTRUDE SHAPE */}
-          <ExtrudeShape
-            rotation={this.state.extrudeRot}
-            position={this.state.extrudePos}
-          />
-
-          {/* CYLINDER */}
-          <Cylinder
-            rotation={this.state.cylinderRot}
-            position={this.state.cylinderPos}
-          />
-
-          {/* PYRAMID */}
-          <Pyramid
-            rotation={this.state.pyramidRot}
-            position={this.state.pyramidPos}
-          />
-
-          {/* LATHE */}
-          <Lathe
-            rotation={this.state.latheRot}
-            position={this.state.lathePos}
-          />
-
-          {/* LIGHTING */}
           <ambientLight intensity={0.6} />
+
           <pointLight
             color={0xffffff}
             distance={10000}
-            position={new THREE.Vector3(3, 3, 3)}
+            position={new THREE.Vector3(1, 1, 1)}
           />
         </scene>
       </React3>
@@ -134,4 +64,4 @@ class Example5 extends React.Component {
   }
 }
 
-export default Example5
+export default Example6

@@ -18,14 +18,13 @@ label {
 
 .navbar {
   text-align: center;
-  /* height: 100px; */
+  display: block;
   background-color: #212121;
   color: #fff;
 }
 
 .navbar h1 {
-  padding-top: 20px;
-  /* padding-bottom: 10px; */
+  padding-top: 10px;
   margin: 0;
   font-family: 'Comfortaa';
   font-size: 36px;
@@ -68,4 +67,30 @@ form div {
 /* HOME */
 .home {
   text-align: center;
+}
+
+/* SWITCHER */
+.switcher-container {
+  background-color: #999;
+  padding: 20px 15px 10px;
+  position: fixed;
+  top: 149px;
+  left: 20px;
+  /* border: 1px solid red; */
+  width: 230px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.color {
+  display: inline;
+  margin-right: 50px;
+}
+
+.select {
+  margin-bottom: 10px;
+}
+
+.switcher-container input {
+  width: 100%;
 }

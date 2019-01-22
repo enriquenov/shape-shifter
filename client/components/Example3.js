@@ -48,7 +48,7 @@ class Example3 extends React.Component {
 
     return (
       <React3
-        mainCamera="camera" // this points to the perspectiveCamera which has the name set to "camera" below
+        mainCamera="camera"
         width={width}
         height={height}
         clearColor={0x0c2340}
@@ -72,7 +72,7 @@ class Example3 extends React.Component {
             rotation={this.state.heartRot}
           >
             <extrudeGeometry shapes={[heartShape]} settings={extrudeSettings} />
-            <meshPhongMaterial color={0xf00000} />
+            <meshPhongMaterial color={0xe74c3c} />
           </mesh>
 
           <ambientLight intensity={0.7} />
@@ -81,6 +81,12 @@ class Example3 extends React.Component {
             color={0xffffff}
             distance={10000}
             position={new THREE.Vector3(3, 3, 3)}
+          />
+
+          <pointLight
+            color={0xffffff}
+            distance={10000}
+            position={new THREE.Vector3(-1, -1, -1)}
           />
         </scene>
       </React3>

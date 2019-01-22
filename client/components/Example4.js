@@ -2,22 +2,29 @@ import React from 'react'
 import React3 from 'react-three-renderer'
 import * as THREE from 'three'
 
-class Example4 extends React.Component {
+class Example5 extends React.Component {
   constructor(props) {
     super(props)
 
-    this.cameraPosition = new THREE.Vector3(0, 0, 40)
+    //construct the position vector here, because if we use 'new' within render,
+    // React will think that things have changed when they have not
+    this.cameraPosition = new THREE.Vector3(0, 0, 50)
 
     this.state = {
       cubeRotation: new THREE.Euler()
     }
 
     this._onAnimate = () => {
+      // we will get this callback every frame
+
+      // pretend cubeRotation is immutable.
+      // this helps with updates and pure rendering.
+      // React will be sure that the rotation has now updated.
       this.setState({
         cubeRotation: new THREE.Euler(
-          this.state.cubeRotation.x + 0.02,
+          this.state.cubeRotation.x + 0.01,
           this.state.cubeRotation.y + 0.01,
-          3
+          5
         )
       })
     }
@@ -26,6 +33,7 @@ class Example4 extends React.Component {
   render() {
     const width = window.innerWidth // canvas width
     const height = window.innerHeight - 122 // canvas height
+    const type = this.props.type
 
     return (
       <React3
@@ -40,23 +48,27 @@ class Example4 extends React.Component {
         <scene>
           <perspectiveCamera
             name="camera"
-            fov={300}
+            fov={50}
             aspect={width / height}
-            near={0.5}
-            far={500}
+            near={0.1}
+            far={1000}
             position={this.cameraPosition}
           />
           <mesh rotation={this.state.cubeRotation}>
-            <sphereGeometry radius={8} widthSegments={32} heightSegments={32} />
-            <meshLambertMaterial color={0xfa8072} />
+            <torusKnotGeometry
+              radius={8}
+              tube={2}
+              tubularSegments={100}
+              radialSegments={16}
+            />
+            <meshLambertMaterial color={0xbb8e4c} />
           </mesh>
 
-          <ambientLight intensity={0.6} />
-
+          <ambientLight intensity={0.8} />
           <pointLight
             color={0xffffff}
             distance={10000}
-            position={new THREE.Vector3(1, 1, 1)}
+            position={new THREE.Vector3(3, 3, 3)}
           />
         </scene>
       </React3>
@@ -64,4 +76,4 @@ class Example4 extends React.Component {
   }
 }
 
-export default Example4
+export default Example5

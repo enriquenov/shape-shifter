@@ -1,43 +1,73 @@
 import React from 'react'
 import React3 from 'react-three-renderer'
 import * as THREE from 'three'
+import Sphere from './shapes/sphere'
+import Sun from './shapes/sun'
+import ExtrudeShape from './shapes/extrudeShape'
+import Cylinder from './shapes/cylinder'
+import Cube from './shapes/cube'
+import Pyramid from './shapes/pyramid'
+import Lathe from './shapes/lathe'
 
 class Example5 extends React.Component {
   constructor(props) {
     super(props)
 
-    //construct the position vector here, because if we use 'new' within render,
-    // React will think that things have changed when they have not
     this.cameraPosition = new THREE.Vector3(0, 0, 50)
 
     this.state = {
-      cubeRotation: new THREE.Euler()
+      sphereRot: new THREE.Euler(),
+      spherePos: new THREE.Vector3(0, -65, 0),
+      sunRot: new THREE.Euler(),
+      sunPos: new THREE.Vector3(23, 8, 0),
+      cubeRot: new THREE.Euler(),
+      cubePos: new THREE.Vector3(10, 4, 0),
+      extrudeRot: new THREE.Euler(),
+      extrudePos: new THREE.Vector3(-20, 0, 0),
+      cylinderRot: new THREE.Euler(),
+      cylinderPos: new THREE.Vector3(0, 3, 0),
+      pyramidRot: new THREE.Euler(),
+      pyramidPos: new THREE.Vector3(-10, 4, 0),
+      latheRot: new THREE.Euler(),
+      lathePos: new THREE.Vector3(20, -1, 0)
     }
 
     this._onAnimate = () => {
-      // we will get this callback every frame
-
-      // pretend cubeRotation is immutable.
-      // this helps with updates and pure rendering.
-      // React will be sure that the rotation has now updated.
       this.setState({
-        cubeRotation: new THREE.Euler(
-          this.state.cubeRotation.x + 0.01,
-          this.state.cubeRotation.y + 0.01,
-          5
+        sphereRot: new THREE.Euler(this.state.sphereRot.x + 0.005, 0, 0),
+        sunRot: new THREE.Euler(0, 0, this.state.sunRot.z - 0.015),
+        cubeRot: new THREE.Euler(this.state.cubeRot.x - 0.02, 0, -2),
+        extrudeRot: new THREE.Euler(
+          this.state.extrudeRot.x + 0.01,
+          this.state.extrudeRot.y + 0.01,
+          this.state.extrudeRot.z - 0.03
+        ),
+        cylinderRot: new THREE.Euler(
+          this.state.cylinderRot.x + 0.01,
+          this.state.cylinderRot.y - 0.01,
+          this.state.cylinderRot.z + 0.02
+        ),
+        pyramidRot: new THREE.Euler(
+          this.state.pyramidRot.x - 0.01,
+          this.state.pyramidRot.y + 0.01,
+          0
+        ),
+        latheRot: new THREE.Euler(
+          0,
+          this.state.latheRot.y + 0.03,
+          this.state.latheRot.z - 0.01
         )
       })
     }
   }
 
   render() {
-    const width = window.innerWidth // canvas width
-    const height = window.innerHeight - 122 // canvas height
-    const type = this.props.type
+    const width = window.innerWidth
+    const height = window.innerHeight - 122
 
     return (
       <React3
-        mainCamera="camera" // this points to the perspectiveCamera which has the name set to "camera" below
+        mainCamera="camera"
         width={width}
         height={height}
         clearColor={0x0c2340}
@@ -48,23 +78,51 @@ class Example5 extends React.Component {
         <scene>
           <perspectiveCamera
             name="camera"
-            fov={50}
+            fov={30}
             aspect={width / height}
-            near={0.1}
-            far={1000}
+            near={1}
+            far={10000}
             position={this.cameraPosition}
           />
-          <mesh rotation={this.state.cubeRotation}>
-            <torusKnotGeometry
-              radius={8}
-              tube={2}
-              tubularSegments={100}
-              radialSegments={16}
-            />
-            <meshLambertMaterial color={0xbb8e4c} />
-          </mesh>
 
-          <ambientLight intensity={0.8} />
+          {/* SPHERE SHAPE*/}
+          <Sphere
+            rotation={this.state.sphereRot}
+            position={this.state.spherePos}
+          />
+
+          {/* SUN */}
+          <Sun rotation={this.state.sunRot} position={this.state.sunPos} />
+
+          {/* CUBE SHAPE*/}
+          <Cube rotation={this.state.cubeRot} position={this.state.cubePos} />
+
+          {/* EXTRUDE SHAPE */}
+          <ExtrudeShape
+            rotation={this.state.extrudeRot}
+            position={this.state.extrudePos}
+          />
+
+          {/* CYLINDER */}
+          <Cylinder
+            rotation={this.state.cylinderRot}
+            position={this.state.cylinderPos}
+          />
+
+          {/* PYRAMID */}
+          <Pyramid
+            rotation={this.state.pyramidRot}
+            position={this.state.pyramidPos}
+          />
+
+          {/* LATHE */}
+          <Lathe
+            rotation={this.state.latheRot}
+            position={this.state.lathePos}
+          />
+
+          {/* LIGHTING */}
+          <ambientLight intensity={0.6} />
           <pointLight
             color={0xffffff}
             distance={10000}
