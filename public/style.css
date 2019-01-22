@@ -83,7 +83,7 @@ form div {
 hr {
   height: 1px;
   border: 0;
-  border-top: 2px solid #a52a2a;
+  border-top: 2px solid #aaa;
   width: 50%;
   margin: 0 auto;
   padding: 0;
@@ -96,7 +96,6 @@ hr {
   position: fixed;
   top: 149px;
   left: 20px;
-  /* border: 1px solid red; */
   width: 230px;
   height: auto;
   border-radius: 5px;

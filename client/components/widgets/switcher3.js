@@ -6,9 +6,14 @@ const naming = str => {
 
 export default class Switcher extends React.Component {
   render() {
-    const {color, radius, handlerChange} = this.props
+    const {color, radius, handlerChange, posX, posY, posZ} = this.props
 
-    const inputs = [{name: 'radius', value: radius, min: 1, max: 9}]
+    const inputs = [
+      {name: 'radius', value: radius, min: 1, max: 9},
+      {name: 'posX', value: posX, min: -10, max: 10},
+      {name: 'posY', value: posY, min: -10, max: 10},
+      {name: 'posZ', value: posZ, min: -50, max: 7}
+    ]
 
     return (
       <div className="switcher-container">

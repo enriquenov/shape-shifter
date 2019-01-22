@@ -11,7 +11,10 @@ class Example2 extends React.Component {
     this.state = {
       cubeRotation: new THREE.Euler(),
       radius: 2,
-      color: 0xadff2f
+      color: 0xadff2f,
+      posX: 0,
+      posY: 0,
+      posZ: 0
     }
 
     this._onAnimate = () => {
@@ -39,7 +42,7 @@ class Example2 extends React.Component {
     const width = window.innerWidth
     const height = window.innerHeight - 122
 
-    const {radius, color, cubeRotation} = this.state
+    const {radius, color, cubeRotation, posX, posY, posZ} = this.state
 
     return (
       <div>
@@ -47,6 +50,9 @@ class Example2 extends React.Component {
           radius={radius}
           color={color}
           handlerChange={this.handlerChange}
+          posX={posX}
+          posY={posY}
+          posZ={posZ}
         />
         <React3
           mainCamera="camera"
@@ -66,7 +72,16 @@ class Example2 extends React.Component {
               far={2000}
               position={this.cameraPosition}
             />
-            <mesh rotation={cubeRotation}>
+            <mesh
+              rotation={cubeRotation}
+              position={
+                new THREE.Vector3(
+                  this.state.posX,
+                  this.state.posY,
+                  this.state.posZ
+                )
+              }
+            >
               <dodecahedronGeometry radius={radius} />
               <meshLambertMaterial color={color} />
             </mesh>

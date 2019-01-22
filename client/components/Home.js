@@ -13,6 +13,7 @@ const Home = () => {
         modeling works.
       </h2>
       <br />
+      <br />
       <p>* Spoiler alert *</p>
       <p>Yes... it's pure math.</p>
       <br />
