@@ -17,6 +17,8 @@ const Home = () => {
       <p>Yes... it's pure math.</p>
       <br />
       <br />
+      <hr />
+      <br />
       <br />
       <br />
       <h3>( THREE.js + WebGL )</h3>

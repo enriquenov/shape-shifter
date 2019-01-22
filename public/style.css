@@ -80,6 +80,15 @@ form div {
   color: #eee;
 }
 
+hr {
+  height: 1px;
+  border: 0;
+  border-top: 2px solid #a52a2a;
+  width: 50%;
+  margin: 0 auto;
+  padding: 0;
+}
+
 /* SWITCHER */
 .switcher-container {
   background-color: #999;
