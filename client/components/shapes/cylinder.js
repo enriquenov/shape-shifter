@@ -9,7 +9,7 @@ const Cylinder = props => {
         radiusTop={2}
         radiusBottom={2}
         height={5}
-        radialSegments={10}
+        radialSegments={40}
         heightSegments={16}
       />
       <meshLambertMaterial color={0xffa07a} />

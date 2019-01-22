@@ -23,9 +23,6 @@ const Navbar = () => (
       <NavLink to="/fifth" activeClassName="selected">
         Fifth
       </NavLink>
-      <NavLink to="/sixth" activeClassName="selected">
-        Sixth
-      </NavLink>
     </nav>
   </div>
 )

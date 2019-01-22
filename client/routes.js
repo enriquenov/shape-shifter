@@ -6,7 +6,6 @@ import Example2 from './components/Example2'
 import Example3 from './components/Example3'
 import Example4 from './components/Example4'
 import Example5 from './components/Example5'
-import Example6 from './components/Example6'
 
 /**
  * COMPONENT
@@ -21,7 +20,6 @@ class Routes extends Component {
         <Route path="/third" component={Example3} />
         <Route path="/fourth" component={Example4} />
         <Route path="/fifth" component={Example5} />
-        <Route path="/sixth" component={Example6} />
       </Switch>
     )
   }

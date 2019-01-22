@@ -5,9 +5,6 @@ import * as THREE from 'three'
 class Example2 extends React.Component {
   constructor(props) {
     super(props)
-
-    //construct the position vector here, because if we use 'new' within render,
-    // React will think that things have changed when they have not
     this.cameraPosition = new THREE.Vector3(0, 0, 10)
 
     this.state = {
@@ -15,11 +12,6 @@ class Example2 extends React.Component {
     }
 
     this._onAnimate = () => {
-      // we will get this callback every frame
-
-      // pretend cubeRotation is immutable.
-      // this helps with updates and pure rendering.
-      // React will be sure that the rotation has now updated.
       this.setState({
         cubeRotation: new THREE.Euler(
           this.state.cubeRotation.x + 0.02,
@@ -31,9 +23,8 @@ class Example2 extends React.Component {
   }
 
   render() {
-    const width = window.innerWidth // canvas width
-    const height = window.innerHeight - 122 // canvas height
-    const type = this.props.type
+    const width = window.innerWidth
+    const height = window.innerHeight - 122
 
     return (
       <React3

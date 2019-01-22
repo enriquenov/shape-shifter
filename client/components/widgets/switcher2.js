@@ -6,11 +6,20 @@ const naming = str => {
 
 export default class Switcher extends React.Component {
   render() {
-    const {color, height, depth, width, handlerChange} = this.props
+    const {
+      color,
+      radius,
+      tube,
+      tubularSegments,
+      radialSegments,
+      handlerChange
+    } = this.props
+
     const inputs = [
-      {name: 'width', value: width},
-      {name: 'height', value: height},
-      {name: 'depth', value: depth}
+      {name: 'radius', value: radius, min: 1, max: 16},
+      {name: 'tube', value: tube, min: 1, max: 4},
+      {name: 'tubularSegments', value: tubularSegments, min: 3, max: 150},
+      {name: 'radialSegments', value: radialSegments, min: 3, max: 16}
     ]
 
     return (
@@ -36,8 +45,8 @@ export default class Switcher extends React.Component {
                 className="slider is-fullwidth is-success"
                 name={input.name}
                 step={1}
-                min={1}
-                max={7}
+                min={input.min}
+                max={input.max}
                 value={input.value}
                 type="range"
                 onChange={e => handlerChange(e)}

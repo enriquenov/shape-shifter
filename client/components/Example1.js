@@ -88,11 +88,6 @@ class Example1 extends React.Component {
               distance={10000}
               position={new THREE.Vector3(4, 3, 2)}
             />
-            {/* <pointLight
-              color={0xffffff}
-              distance={10000}
-              position={new THREE.Vector3(-3, -3, 0)}
-            /> */}
           </scene>
         </React3>
       </div>
