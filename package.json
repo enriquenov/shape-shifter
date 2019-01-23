@@ -40,7 +40,6 @@
     "axios": "^0.15.3",
     "bulma": "^0.7.2",
     "bulma-extensions": "^4.0.1",
-    "cannon": "^0.6.2",
     "compression": "^1.7.3",
     "connect-session-sequelize": "^4.1.0",
     "express": "^4.16.3",
