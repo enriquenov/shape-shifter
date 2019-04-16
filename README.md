@@ -9,7 +9,11 @@ Please visit the [website](https://shape-shifter.herokuapp.com/).
 * HTML
 * CSS
 * JavaScript / ES6
-* React
-* Redux
+* React / Redux
 * Three.js
 * React-Three-Renderer
+* Bulma.io
+* Webpack
+* Travis CI
+* Heroku
+* Babel
